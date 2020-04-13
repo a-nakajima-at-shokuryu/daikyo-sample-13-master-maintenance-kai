@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 
 // Material-UI関連のimport
 import {
+  createMuiTheme, 
+  MuiThemeProvider, 
   CssBaseline, 
   Grid,
   Typography,
@@ -11,6 +13,7 @@ import {
   IconButton,
   TextField,
 } from '@material-ui/core'
+import { blue } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 import MUIDataTable from 'mui-datatables'
 import CreateIcon from '@material-ui/icons/Create';
@@ -53,6 +56,16 @@ const DEL_BUSHO = gql`
 const List = (props) => {
 
   const classes = useStyles()
+
+  // Material-UIのテーマ設定
+  // カラーの設定
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: blue[700]
+      },
+    }, 
+  })
 
   // ステートフック
   const [bushoId, setBushoId] = useState("")
@@ -187,7 +200,7 @@ const List = (props) => {
   const datas = data.busho
 
   return (
-    <>
+    <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <FormControl className={classes.root}>
         <Grid container spacing={2}>
@@ -215,7 +228,7 @@ const List = (props) => {
           </Grid>
         </Grid>
       </FormControl>
-    </>
+    </MuiThemeProvider>
   )
 
 }
