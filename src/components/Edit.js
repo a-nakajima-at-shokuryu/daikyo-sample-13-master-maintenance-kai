@@ -58,20 +58,19 @@ const UPD_BUSHO = gql`
     }
   }
 `
+// Material-UIのテーマ設定
+// primaryカラーの設定
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: blue[700]
+    }
+  }, 
+})
 
 const Edit = (props) => {
 
   const classes = useStyles()
-
-  // Material-UIのテーマ設定
-  // primaryカラーの設定
-  const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: blue[700]
-      }
-    }, 
-  })
 
   // ステートフック
   const [bushoId, setBushoId] = useState("")
