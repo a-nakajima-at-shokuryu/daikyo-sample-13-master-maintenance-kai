@@ -3,8 +3,6 @@ import { withRouter } from 'react-router-dom'
 
 // Material-UI関連のimport
 import {
-  createMuiTheme, 
-  MuiThemeProvider, 
   CssBaseline, 
   Grid,
   Typography,
@@ -12,7 +10,6 @@ import {
   Button,
   TextField,
 } from '@material-ui/core'
-import { blue } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/core/styles'
 
 // GraphQL関連のimport
@@ -62,16 +59,6 @@ const UPD_BUSHO = gql`
 const Edit = (props) => {
 
   const classes = useStyles()
-
-  // Material-UIのテーマ設定
-  // primaryカラーの設定
-  const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: blue[700]
-      }
-    }, 
-  })
 
   // ステートフック
   const [bushoId, setBushoId] = useState("")
@@ -208,7 +195,7 @@ const Edit = (props) => {
   if (error)   return <p>Error: {error}</p>
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <>
       <CssBaseline />
       <FormControl className={classes.root}>
         <Grid container spacing={2}>
@@ -239,7 +226,7 @@ const Edit = (props) => {
           </Grid>
         </Grid>
       </FormControl>
-    </MuiThemeProvider>
+    </>
   )
 
 }
